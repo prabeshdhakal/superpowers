@@ -13,24 +13,24 @@ If you have already invoked this skill in the current session, do not invoke it 
 
 ## Step 1: Knowledge Graph
 
-Check whether `.understand_anything/` exists in the repo root.
+Check whether `.understand-anything/` exists in the repo root.
 
 ```bash
-ls .understand_anything/ 2>/dev/null && echo "EXISTS" || echo "ABSENT"
+ls .understand-anything/ 2>/dev/null && echo "EXISTS" || echo "ABSENT"
 ```
 
 **If ABSENT:** Skip to Step 2.
 
-**If EXISTS:** Read `.understand_anything/summary.md` if present, otherwise read the first file found under `.understand_anything/` that contains a module or component listing. Surface the module names and one-line responsibilities to yourself. Do not read all files under `.understand_anything/` — one summary file is enough.
+**If EXISTS:** Read `.understand-anything/summary.md` if present, otherwise read the first file found under `.understand-anything/` that contains a module or component listing. Surface the module names and one-line responsibilities to yourself. Do not read all files under `.understand-anything/` — one summary file is enough.
 
 ```bash
-ls .understand_anything/
+ls .understand-anything/
 ```
 
 Read whichever of these exists (check in order, stop at first hit):
-- `.understand_anything/summary.md`
-- `.understand_anything/graph.md`
-- `.understand_anything/index.md`
+- `.understand-anything/summary.md`
+- `.understand-anything/graph.md`
+- `.understand-anything/index.md`
 
 ## Step 2: Project Memory
 
@@ -54,6 +54,6 @@ Example: if the user said "add rate limiting to the API", call `search_nodes(que
 ## What Not To Do
 
 - Do not call `read_graph` — it loads the entire graph and wastes context
-- Do not read every file under `.understand_anything/`
+- Do not read every file under `.understand-anything/`
 - Do not store anything during context-load — this skill only reads
 - Do not invoke this skill more than once per session
