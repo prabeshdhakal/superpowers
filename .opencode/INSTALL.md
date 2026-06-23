@@ -10,7 +10,7 @@ Add superpowers to the `plugin` array in your `opencode.json` (global or project
 
 ```json
 {
-  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"]
+  "plugin": ["superpowers@git+https://github.com/prabeshdhakal/superpowers.git"]
 }
 ```
 
@@ -38,6 +38,31 @@ rm -rf ~/.config/opencode/superpowers
 ```
 
 Then follow the installation steps above.
+
+## Optional: Project Memory
+
+The `context-load` skill is available once the plugin is installed. It checks for a knowledge graph (`.understand_anything/`) and queries project memory at session start.
+
+Project memory requires a per-repo `opencode.json` in your project root (separate from the global one that declares the plugin):
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "project-memory": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
+      "environment": {
+        "MEMORY_FILE_PATH": ".superpowers/memory.jsonl"
+      }
+    }
+  }
+}
+```
+
+The memory file (`.superpowers/memory.jsonl`) is machine-local and gitignored automatically — add `.superpowers/` to your project's `.gitignore` if it isn't already.
+
+Memory stores only project knowledge not already in the repo: architectural decisions made in chat, constraints stated verbally, known gotchas. It never stores personal information.
 
 ## Usage
 
